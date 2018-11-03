@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.session.is_login %}
+    <h1>欢迎登录：</h1>{{ request.session.user_name }}
+        {% else %}
+        <h1 color="red">
+            请登录
+        </h1>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

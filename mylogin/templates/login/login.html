@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block title %}login page{% endblock %}
+{% block css %}
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+
+<body>
+{% block content %}
+    <div style="margin: 15% 40%;">
+            <form method="post" href="#">
+                {% csrf_token %}
+                  {% if message %}
+      <div class="alert alert-warning">{{ message }}</div>
+  {% endif %}
+        <h1>欢迎登录！!!</h1>
+
+{#              <div class="form-group">#}
+{#                <label for="id_username">用户名</label>#}
+{#                <input type="text" class="form-control" id="username" name = "username" placeholder="name" autofocus required>#}
+{#              </div>#}
+{#              <div class="form-group">#}
+{#                <label for="id_password">密码</label>#}
+{#                <input type="password" class="form-control" id="password"  name = "password" placeholder="Password" required>#}
+{#              </div>#}
+            <div class="form-group">
+                {{ login_form.username.label_tag }}
+                {{ login_form.username }}
+                </div>
+            <div class="form-group">
+                {{ login_form.password.label_tag }}
+                {{ login_form.password }}
+            </div>
+
+                <div class="form-group">
+                    {{ login_form.captcha.errors }}
+                {{ login_form.captcha.label_tag }}
+                    {{ login_form.captcha }}
+                </div>
+              <button type="submit" class="btn btn-default pull-left">重置</button>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+            </form>
+    </div>
+{% endblock %}
+</body>
+</html>
